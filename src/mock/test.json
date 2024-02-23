@@ -1,0 +1,62 @@
+{
+    "router": [
+        {
+            "id": "1",
+            "name-navigation": "Blog",
+            "linkRouter": "/blog"
+        },
+        {
+            "id": "2",
+            "name-navigation": "About Us",
+            "linkRouter": "/aboutus"
+        },
+        {
+            "id": "3",
+            "name-navigation": "Support",
+            "linkRouter": "/support"
+        },
+        {
+            "id": "4",
+            "name-navigation": "Event",
+            "linkRouter": "/event"
+        }
+    ],
+    "userRouter": [
+        {
+            "id": "1",
+            "name-navigation": "Profile",
+            "linkRouter": "/profile"
+        },
+        {
+            "id": "2",
+            "name-navigation": "Orders",
+            "linkRouter": "/orders"
+        }
+    ],
+    "icon": [
+        {
+            "id": "1",
+            "iconAlt": "Facebook",
+            "iconPath": "/facebook",
+            "iconSrc": "../assets/icon/facebook.png"
+        },
+        {
+            "id": "2",
+            "iconAlt": "Telegram",
+            "iconPath": "/telegram",
+            "iconSrc": "../assets/icon/telegram.png"
+        },
+        {
+            "id": "3",
+            "iconAlt": "Linkedin",
+            "iconPath": "/Linkedin",
+            "iconSrc": "../assets/icon/linkedin.png"
+        },
+        {
+            "id": "4",
+            "iconAlt": "Youtube",
+            "iconPath": "/youtube",
+            "iconSrc": "../assets/icon/youtube.png"
+        }
+    ]
+}
