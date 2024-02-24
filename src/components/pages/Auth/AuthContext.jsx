@@ -13,6 +13,7 @@ export function FlyAuth(props) {
         username: "",
         password: "",
         error: false,
+        hide: true,
     };
 
     const authReducer = (state, action) => {
@@ -37,6 +38,11 @@ export function FlyAuth(props) {
                     ...state,
                     isLoggedIn: action.payload,
                 };
+            case "hideAdmin":
+                return {
+                    ...state,
+                    hide: action.payload,
+                }
             default:
                 return state;
         }
@@ -82,7 +88,6 @@ const LoginAccount = () => {
             return data;
         } catch (error) {
             console.error("Login failed:", error);
-            throw error;
         }
     };
 
@@ -107,6 +112,7 @@ const LoginAccount = () => {
                 dispatch({ type: "error", payload: token.error });
             } else {
                 setToken(token);
+                dispatch({ type: "hide", payload: false }) //hide admin
                 dispatch({ type: "show", payload: true });
             }
         } catch (error) {

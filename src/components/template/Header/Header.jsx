@@ -5,6 +5,7 @@ import Navigation from "../../../mock/test.json";
 import Logo from "../../../assets/logo/logo.png";
 import AuthFormComponent from "../../pages/Auth/index";
 import { NavigationLinks, RouterDropdown } from "../../forms/DropDown";
+import Admin from "../../pages/admin/admin";
 
 const LogoPage = ({ image }) => {
   return (
@@ -21,8 +22,8 @@ function Header() {
     <>
       <nav>
         <LogoPage image={Logo} />
-        <NavigationLinks router={Navigation.router} status={<AuthFormComponent />} />
-        <RouterDropdown routerDropdown={Navigation.router} status={<AuthFormComponent />} />
+        <NavigationLinks router={Navigation.router} status={<AuthFormComponent />} loginAdmin={<Admin TextStatus={'Admin'} LinkTo={'admin'} />} />
+        <RouterDropdown routerDropdown={Navigation.router} status={<AuthFormComponent />} loginAdmin={<Admin TextStatus={'Admin'} LinkTo={'admin'} />} />
       </nav>
     </>
   );

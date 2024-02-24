@@ -2,7 +2,7 @@ import React from "react";
 import "../../styles/header.scss";
 
 
-const NavigationLinks = ({ router, status }) => {
+const NavigationLinks = ({ router, status, loginAdmin }) => {
     return (
         <ul className="nav-list-pages">
             {router.map((routerItem) => (
@@ -17,11 +17,16 @@ const NavigationLinks = ({ router, status }) => {
                     {status}
                 </div>
             </li>
+            <li className="nav-router-page">
+                <div className="nav-router-page-color">
+                    {loginAdmin}
+                </div>
+            </li>
         </ul>
     );
 };
 
-const RouterDropdown = ({ routerDropdown, status }) => {
+const RouterDropdown = ({ routerDropdown, status, loginAdmin }) => {
     return (
         <>
             <div className="menu-dropdown">
@@ -37,6 +42,13 @@ const RouterDropdown = ({ routerDropdown, status }) => {
                             {status}
                         </div>
                     </div>
+                    <div className="nav-router-page">
+
+                        <div className="dropdown-content-link">
+                            {loginAdmin}
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </>
