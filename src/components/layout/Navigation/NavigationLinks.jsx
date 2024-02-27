@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
 import "../Header/header.scss";
+import PropTypes from 'prop-types';
 
 // Navigation main links
 const NavigationLinks = ({ router, status, loginAdmin }) => {
@@ -69,6 +69,24 @@ const NavigationOfUser = ({ NavigationUser, showDropdownUser, Status }) => {
             </ul>
         </div>
     );
+};
+
+NavigationLinks.propTypes = {
+    router: PropTypes.array,
+    status: PropTypes.object,
+    loginAdmin: PropTypes.object
+};
+
+NavigationLinksMedia.propTypes = {
+    routerDropdown: PropTypes.array,
+    status: PropTypes.object,
+    loginAdmin: PropTypes.object
+};
+
+NavigationOfUser.propTypes = {
+    NavigationUser: PropTypes.array,
+    showDropdownUser: PropTypes.object,
+    Status: PropTypes.object
 };
 
 export {

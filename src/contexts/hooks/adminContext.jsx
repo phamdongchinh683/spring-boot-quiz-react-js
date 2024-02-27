@@ -11,7 +11,7 @@ export const FlyOutAdmin = (props) => {
             {props.children}
         </FlyAuthAdmin.Provider>
     )
-}
+};
 
 
 

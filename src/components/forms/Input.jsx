@@ -36,6 +36,6 @@ Input.propTypes = {
     value: PropTypes.any,
     name: PropTypes.string,
     required: PropTypes.bool
-}
+};
 
 export default Input;

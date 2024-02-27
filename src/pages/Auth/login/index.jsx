@@ -39,4 +39,14 @@ const LoginForm = (
   );
 };
 
+LoginForm.propTypes = {
+  linkText: PropTypes.string,
+  setToken: PropTypes.func,
+  error: PropTypes.string,
+  userName: PropTypes.string,
+  passWord: PropTypes.string,
+  button: PropTypes.func,
+  submit: PropTypes.func
+}
+
 export default LoginForm;

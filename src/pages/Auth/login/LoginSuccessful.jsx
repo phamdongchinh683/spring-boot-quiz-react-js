@@ -1,5 +1,5 @@
 import Guest from '../Guest';
-
+import PropTypes from 'prop-types';
 const LoginSuccessful = ({ setToken, TextStatus }) => {
     return (
         <div className="container-status-login">
@@ -8,4 +8,8 @@ const LoginSuccessful = ({ setToken, TextStatus }) => {
     );
 };
 
+LoginSuccessful.propTypes = {
+    setToken: PropTypes.func,
+    TextStatus: PropTypes.string
+}
 export default LoginSuccessful;

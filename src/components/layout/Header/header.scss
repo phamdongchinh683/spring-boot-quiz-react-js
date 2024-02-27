@@ -172,6 +172,17 @@ nav {
   align-items: center;
 }
 
+.nav-router-page {
+  .my-out-img {
+    .image-guest {
+      width: 25px;
+      height: 25px;
+      filter: brightness(0) invert(1);
+      -webkit-filter: brightness(0) invert(1);
+    }
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .menu-dropdown {
     display: block;
@@ -207,8 +218,8 @@ nav {
   .nav-router-page {
     .my-out-img {
       .image-guest {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         filter: brightness(0);
         -webkit-filter: brightness(0);
       }
@@ -218,8 +229,8 @@ nav {
   .nav-router-page:hover {
     .my-out-img {
       .image-guest {
-        width: 30px;
-        height: 30px;
+        width: 25px;
+        height: 25px;
         filter: brightness(0) invert(1);
         -webkit-filter: brightness(0) invert(1);
       }

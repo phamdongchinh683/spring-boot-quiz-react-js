@@ -23,7 +23,6 @@ const InputEmailFooter = () => {
                 dispatch({ type: 'error', payload: false });
                 dispatch({ type: 'ok', payload: true });
                 dispatch({ type: 'input', payload: '' });
-
             };
 
         } catch (error) {

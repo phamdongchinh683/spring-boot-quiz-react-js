@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 import { FlyFooter } from "../index";
 import IconFooter from '../../components/layout/Footer/IconFooter';
@@ -51,5 +52,9 @@ EmailContext.IconFooter = IconFooter;
 EmailContext.InputEmailFooter = InputEmailFooter;
 EmailContext.FooterMenus = FooterMenus;
 EmailContext.AsideFooter = AsideFooter;
+
+EmailContext.propTypes = {
+    props: PropTypes.any
+};
 
 export default EmailContext;

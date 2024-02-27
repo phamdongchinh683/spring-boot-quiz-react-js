@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import iconAdmin from "../../assets/icon/admin.png";
+import iconAdmin from "../../assets/icon/admin.svg";
 import "../Auth/login/login.scss";
 
 const Admin = ({ LinkTo, TextStatus }) => {

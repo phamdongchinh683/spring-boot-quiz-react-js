@@ -14,6 +14,6 @@ function Layout() {
       <footer><Footer /></footer>
     </div>
   );
-}
+};
 
 export default Layout;

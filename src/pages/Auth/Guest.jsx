@@ -1,7 +1,10 @@
 import React from 'react';
-import icon from "../../assets/icon/guest.png";
-import "../Auth/login/login.scss";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import icon from "../../assets/icon/guest.svg";
+import "../Auth/login/login.scss";
+
 
 const Guest = ({ TextStatus, LinkTo }) => {
     return (
@@ -14,6 +17,11 @@ const Guest = ({ TextStatus, LinkTo }) => {
             </div>
         </Link>
     );
+};
+
+Guest.propTypes = {
+    TextStatus: PropTypes.string,
+    LinkTo: PropTypes.string
 };
 
 export default Guest;
