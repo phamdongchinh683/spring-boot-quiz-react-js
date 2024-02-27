@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/template/Layout";
-import Home from "./components/pages/Home";
-import NotFoundError from "./components/pages/NotFound/NotFound";
-import AuthForm from "./components/pages/Auth/AuthForm";
-import PageAdmin from "./components/pages/admin/index";
+import Layout from "./components/layout/index";
+import Home from "./pages/Home/index";
+import NotFoundError from "./pages/NotFound/index";
+import AuthForm from "./pages/Auth/AuthForm";
+import PageAdmin from "./pages/admin/index";
 function App() {
   return (
     <Routes>
