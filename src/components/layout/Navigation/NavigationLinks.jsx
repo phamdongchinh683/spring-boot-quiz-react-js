@@ -71,6 +71,14 @@ const NavigationOfUser = ({ NavigationUser, showDropdownUser, Status }) => {
     );
 };
 
+const NavigationLinkAdmin = () => {
+    return (
+        <>
+            
+        </>
+    )
+}
+
 NavigationLinks.propTypes = {
     router: PropTypes.array,
     status: PropTypes.object,

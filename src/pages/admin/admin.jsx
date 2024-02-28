@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import iconAdmin from "../../assets/icon/admin.svg";
 import "../Auth/login/login.scss";
+import PropTypes from 'prop-types';
 
 const Admin = ({ LinkTo, TextStatus }) => {
     return (
@@ -15,5 +16,10 @@ const Admin = ({ LinkTo, TextStatus }) => {
         </Link>
     );
 };
+
+Admin.propTypes = {
+    LinkTo: PropTypes.string,
+    TextStatus: PropTypes.string
+}
 
 export default Admin;

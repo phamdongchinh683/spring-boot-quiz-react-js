@@ -10,7 +10,8 @@ const Input = ({
     className,
     value,
     name,
-    onSubmit }) => {
+    onSubmit,
+    required }) => {
     return (
         <>
             <input
@@ -22,7 +23,7 @@ const Input = ({
                 className={className}
                 value={value}
                 name={name}
-                required />
+                required={required} />
         </>
     )
 };

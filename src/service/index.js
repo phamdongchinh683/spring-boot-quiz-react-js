@@ -6,13 +6,13 @@ const Service = () => {
   const { loginApiUrl, sendEmailApiUrl } = api;
 
   const Login = async (credentials) => {
+    console.log(loginApiUrl);
     try {
       const res = await axios.post(loginApiUrl, credentials, {
         headers: {
           "Content-Type": "application/json",
         },
       });
-
       if (res.status >= 200 && res.status < 300) {
         return res.data;
       } else {

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
 const LogoPage = ({ image }) => {
     return (
         <div className="page-logo">

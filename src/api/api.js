@@ -1,7 +1,6 @@
 class api {
-  apiUrl = process.env.REACT_APP_API_URL;
-  loginApiUrl = "http://localhost:8080/login";
-  sendEmailApiUrl = "http://localhost:8080/register";
+  loginApiUrl = process.env.REACT_APP_LOGIN_API;
+  sendEmailApiUrl = process.env.REACT_APP_SEND_EMAIL_API;
 }
 
 module.exports = new api();
