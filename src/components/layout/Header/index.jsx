@@ -5,7 +5,8 @@ import NavigationList from "../../../mock/test.json";
 import Logo from "../../../assets/logo/logo.png";
 import LogoPage from "./logo";
 import AuthFormComponent from "../../../pages/Auth/index";
-import { NavigationLinks, NavigationLinksMedia } from "../Navigation/NavigationLinks";
+import NavigationLinks from "../Navigation/NavigationLinks";
+import NavigationLinksMedia from "../Navigation/NavigationLinksMedia";
 import Admin from "../../../pages/admin/admin";
 
 function Header() {

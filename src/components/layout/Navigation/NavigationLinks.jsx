@@ -28,56 +28,6 @@ const NavigationLinks = ({ router, status, loginAdmin }) => {
     );
 };
 
-const NavigationLinksMedia = ({ routerDropdown, status, loginAdmin }) => {
-    return (
-        <>
-            <div className="menu-dropdown">
-                <div className="icon">&#9776;</div>
-                <div className="dropdown-content">
-                    {routerDropdown.map((routerDropdownItem) => (
-                        <Link to={routerDropdownItem.linkRouter} className="dropdown-content-link" key={routerDropdownItem.id}>
-                            {routerDropdownItem["name-navigation"]}
-                        </Link>
-                    ))}
-                    <div className="nav-router-page" key="status">
-                        <div className="dropdown-content-link">
-                            {status}
-                        </div>
-                    </div>
-                    <div className="nav-router-page" key="loginAdmin">
-                        <div className="dropdown-content-link">
-                            {loginAdmin}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
-    );
-};
-
-const NavigationOfUser = ({ NavigationUser, showDropdownUser, Status }) => {
-    return (
-        <div className="dropdown-menu-user">
-            <div>{showDropdownUser}</div>
-            <ul className="dropdown-menu-content-user">
-                {NavigationUser.map((NavigationUserItem) => (
-                    <Link to={NavigationUserItem.linkRouter} className="dropdown-content-link-user" key={NavigationUserItem.id}>
-                        {NavigationUserItem["name-navigation"]}
-                    </Link>
-                ))}
-                <div key="status">{Status}</div>
-            </ul>
-        </div>
-    );
-};
-
-const NavigationLinkAdmin = () => {
-    return (
-        <>
-            
-        </>
-    )
-}
 
 NavigationLinks.propTypes = {
     router: PropTypes.array,
@@ -85,20 +35,5 @@ NavigationLinks.propTypes = {
     loginAdmin: PropTypes.object
 };
 
-NavigationLinksMedia.propTypes = {
-    routerDropdown: PropTypes.array,
-    status: PropTypes.object,
-    loginAdmin: PropTypes.object
-};
 
-NavigationOfUser.propTypes = {
-    NavigationUser: PropTypes.array,
-    showDropdownUser: PropTypes.object,
-    Status: PropTypes.object
-};
-
-export {
-    NavigationLinks,
-    NavigationOfUser,
-    NavigationLinksMedia
-};
+export default NavigationLinks;

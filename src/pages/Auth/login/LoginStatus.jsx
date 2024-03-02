@@ -4,7 +4,7 @@ import React from 'react';
 import NavigationLink from "../../../mock/test.json";
 import Guest from '../Guest';
 import { FlyAuth } from '../../../contexts';
-import { NavigationOfUser } from '../../../components/layout/Navigation/NavigationLinks';
+import NavigationOfUser from '../../../components/layout/Navigation/NavigationOfUser';
 import useTokens from '../../../token/useTokens';
 import FlyOutAuth from "../../../contexts/hooks/AuthContext";
 

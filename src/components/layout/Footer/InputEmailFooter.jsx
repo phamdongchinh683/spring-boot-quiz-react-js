@@ -28,7 +28,7 @@ const InputEmailFooter = () => {
         } catch (error) {
             console.log(error);
         }
-    }
+    };
 
 
     return (

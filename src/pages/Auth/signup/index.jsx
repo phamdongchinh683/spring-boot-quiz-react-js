@@ -12,15 +12,25 @@ const SignUp = (props) => {
         <form>
           <div className="title">Sign Up</div>
           <div className="input-box underline">
-            <Input type={'text'} placeholder={'Enter Your Username'} className={"input-box-placeholder"} required />
+            <Input
+              type={'text'}
+              placeholder={'Enter Your Username'}
+              className={"input-box-placeholder"}
+              required />
             <div className="underline"></div>
           </div>
           <div className="input-box">
-            <Input type={'password'} placeholder={'Enter Your Password'} className={"input-box-placeholder"} required />
+            <Input type={'password'}
+              placeholder={'Enter Your Password'}
+              className={"input-box-placeholder"}
+              required />
             <div className="underline"></div>
           </div>
           <div className="input-box">
-            <Input type={'email'} placeholder={'Enter Your Email'} className={"input-box-placeholder"} required />
+            <Input type={'email'}
+              placeholder={'Enter Your Email'}
+              className={"input-box-placeholder"}
+              required />
             <div className="underline"></div>
           </div>
           <div className="input-box">
@@ -35,7 +45,9 @@ const SignUp = (props) => {
             <div className="underline"></div>
           </div>
           <div className="input-box button">
-            <Input type={'submit'} className={'button-signup'} value={'Sign Up'} />
+            <Input type={'submit'}
+              className={'button-signup'}
+              value={'Sign Up'} />
           </div>
         </form>
       </div>
