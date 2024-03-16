@@ -1,11 +1,11 @@
 import React from "react";
-import FlyOutAuth from "../../contexts/hooks/AuthContext";
+import AuthContext from "../../contexts/Hooks/AuthContext";
 
 const AuthFormComponent = () => {
     return (
-        <FlyOutAuth>
-            <FlyOutAuth.LoginStatus />
-        </FlyOutAuth>
+        <AuthContext>
+            <AuthContext.LoginStatus />
+        </AuthContext>
     )
 }
 

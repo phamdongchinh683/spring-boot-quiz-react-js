@@ -1,8 +1,9 @@
 import React from "react";
+import TodoList from "../TodoList";
 function LandingPage() {
   return (
     <>
-    <h1>LandingPage</h1>
+      <TodoList />
     </>
   );
 }

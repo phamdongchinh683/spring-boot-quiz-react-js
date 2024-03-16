@@ -1,17 +1,16 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/index";
+
+import Layout from "./components/Layout/index";
 import Home from "./pages/Home/index";
 import NotFoundError from "./pages/NotFound/index";
-import AuthForm from "./pages/Auth/AuthForm";
-import PageAdmin from "./pages/admin/index";
+import AuthForm from "./pages/Auth/Components/AuthForm";
+import PageAdmin from "./pages/Admin/index";
+
 function App() {
   return (
     <Routes>
-      <Route
-        path="/"
-        element={<Layout />}
-      >
+      <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="login" element={<AuthForm swapForm={true} />} />
         <Route path="signup" element={<AuthForm swapForm={false} />} />

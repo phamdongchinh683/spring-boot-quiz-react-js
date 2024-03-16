@@ -1,0 +1,37 @@
+@mixin font-website($fontFamily) {
+  font-family: $fontFamily, "Open sans";
+}
+
+body {
+  @include font-website("sans-serif");
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  margin-top: auto;
+}
+
+
+main {
+  margin-top: 6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.container-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

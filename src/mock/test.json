@@ -58,5 +58,27 @@
             "iconPath": "/youtube",
             "iconSrc": "../assets/icon/youtube.png"
         }
+    ],
+    "adminNavigation": [
+        {
+            "id": "1",
+            "name-navigation": "List Emails",
+            "linkRouter": "/listemail"
+        },
+        {
+            "id": "2",
+            "name-navigation": "List Users",
+            "linkRouter": "/aboutus"
+        },
+        {
+            "id": "3",
+            "name-navigation": "List Products",
+            "linkRouter": "/support"
+        },
+        {
+            "id": "4",
+            "name-navigation": "Event",
+            "linkRouter": "/event"
+        }
     ]
 }

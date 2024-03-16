@@ -23,7 +23,8 @@ const Input = ({
                 className={className}
                 value={value}
                 name={name}
-                required={required} />
+                required={required}
+            />
         </>
     )
 };
@@ -33,8 +34,9 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
+    onsubmit: PropTypes.func,
     className: PropTypes.string,
-    value: PropTypes.any,
+    value: PropTypes.string,
     name: PropTypes.string,
     required: PropTypes.bool
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import "../layout/layout.scss"
-import Header from "./Header";
-import Footer from "./Footer";
+import "./index.scss";
+import Header from "./Header/index";
+import Footer from "./Footer/index";
 function Layout() {
   return (
     <div className="container-body">
