@@ -1,10 +1,9 @@
 import axios from "axios";
-
-import api from "../api/api";
-
+import api from "../api";
+import useTokens from "../jwt/useTokens";
 const Service = () => {
+  const { getToken } = useTokens();
   const { loginApiUrl, sendEmailApiUrl, signupApiUrl } = api;
-
   const SignUp = async (credentials) => {
     try {
       const res = await axios.post(signupApiUrl, credentials, {
@@ -25,13 +24,15 @@ const Service = () => {
 
   const Login = async (credentials) => {
     try {
+      let token = getToken();
       const res = await axios.post(loginApiUrl, credentials, {
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
       });
-      if (res.status >= 200) {
-      return res.data;
+      if (res.status === 200) {
+        return res.data;
       } else {
         throw new Error("Login failed");
       }

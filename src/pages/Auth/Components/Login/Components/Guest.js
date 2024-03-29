@@ -1,26 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-import icon from "../../../../../assets/icon/guest.svg";
+import icon from "../../../../../assets/Icon/guest.svg";
 import "../index.scss";
 
 const Guest = ({ TextStatus, LinkTo }) => {
-    return (
-        <Link to={LinkTo}>
-            <div className='container-login-show'>
-                <div className='my-out-img'>
-                    <img src={icon} alt="Guest" className='image-guest' />
-                </div>
-                <div className='guest-text-status'>{TextStatus}</div>
-            </div>
-        </Link>
-    );
+  return (
+    <Link to={LinkTo}>
+      <div className="container-login-show">
+        <div className="my-out-img">
+          <img src={icon} alt="Guest" className="image-guest" />
+        </div>
+        <div className="guest-text-status">{TextStatus}</div>
+      </div>
+    </Link>
+  );
 };
 
 Guest.propTypes = {
-    TextStatus: PropTypes.string,
-    LinkTo: PropTypes.string
+  TextStatus: PropTypes.string,
+  LinkTo: PropTypes.string,
 };
 
 export default Guest;

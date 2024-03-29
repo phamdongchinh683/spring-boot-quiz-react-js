@@ -2,7 +2,7 @@ import React from "react";
 
 function useTokens() {
   const getToken = () => {
-    const tokenString = localStorage.getItem("loginUser");
+    const tokenString = localStorage.getItem("Token");
     const userToken = JSON.parse(tokenString);
     return userToken;
   };
@@ -10,12 +10,12 @@ function useTokens() {
   const [token, setToken] = React.useState(getToken());
 
   const saveToken = (userToken) => {
-    localStorage.setItem("loginUser", JSON.stringify(userToken));
+    localStorage.setItem("Token", JSON.stringify(userToken));
     setToken(userToken);
   };
 
   const deleteToken = () => {
-    localStorage.removeItem("loginUser");
+    localStorage.removeItem("Token");
     setToken(null);
   };
 
@@ -23,6 +23,7 @@ function useTokens() {
     setToken: saveToken,
     token,
     deleteToken,
+    getToken,
   };
 }
 

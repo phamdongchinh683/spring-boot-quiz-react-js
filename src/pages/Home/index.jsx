@@ -1,6 +1,6 @@
 import React from "react";
 import TodoList from "../TodoList";
-function LandingPage() {
+const LandingPage = () => {
   return (
     <>
       <TodoList />

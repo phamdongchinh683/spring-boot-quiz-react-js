@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 
-import iconAdmin from "../../../assets/icon/admin.svg";
+import iconAdmin from "../../../assets/Icon/admin.svg";
 import "../../Auth/Components/Login/index.scss";
 
 const Admin = ({ LinkTo, TextStatus }) => {

@@ -13,19 +13,17 @@ const Input = ({
     onSubmit,
     required }) => {
     return (
-        <>
-            <input
-                type={type}
-                placeholder={placeholder}
-                onChange={onChange}
-                onSubmit={onSubmit}
-                onClick={onClick}
-                className={className}
-                value={value}
-                name={name}
-                required={required}
-            />
-        </>
+        <input
+            type={type}
+            placeholder={placeholder}
+            onChange={onChange}
+            onSubmit={onSubmit}
+            onClick={onClick}
+            className={className}
+            value={value}
+            name={name}
+            required={required}
+        />
     )
 };
 

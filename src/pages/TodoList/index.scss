@@ -11,7 +11,6 @@ $color-page: #232f3e;
 .todo_list_button {
   font-weight: 600;
   padding: 10px;
-  border-radius: 25px;
   width: 100px;
   color: white;
   background-color: $color-page;
@@ -22,7 +21,7 @@ $color-page: #232f3e;
 .todo_list_button:hover {
   color: $color-page;
   background-color: powderblue;
-  transition: 1s;
+  transition: 0.3s;
   cursor: pointer;
 }
 
