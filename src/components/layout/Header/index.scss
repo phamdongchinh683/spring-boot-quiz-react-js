@@ -6,7 +6,7 @@ nav {
   align-items: center;
   width: 100%;
   height: auto;
-  background-color: #232f3e;
+  background-color: $color-page;
   margin: 0;
   top: 0;
   z-index: 999;
@@ -59,8 +59,8 @@ nav {
 }
 
 .page-image-logo {
-  width: 90px;
-  height: 90px;
+  // width: 90px;
+  // height: 90px;
 }
 
 .text-status-link {
@@ -122,6 +122,7 @@ nav {
 }
 
 .dropdown-content-link-user {
+  cursor: pointer;
   text-decoration: none;
   display: block;
   background-color: #ffff;
@@ -158,9 +159,9 @@ nav {
 .dropdown-menu-user:hover .dropdown-menu-content-user {
   z-index: 999;
   display: flex;
-  border-radius: 5pt;
+  border-radius: 5px;
   flex-direction: column;
-  padding: 10px 0px 10px 10px;
+  padding: 10px;
   margin-left: 20px;
   gap: 1em;
   border: 1px solid #072243;
@@ -183,7 +184,7 @@ nav {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1148px) {
   .menu-dropdown {
     display: block;
   }

@@ -1,29 +1,38 @@
-import React from "react";
+import { useState, useEffect } from "react";
 
 function useTokens() {
   const getToken = () => {
-    const tokenString = localStorage.getItem("Token");
+    const tokenString = localStorage.getItem("token");
     const userToken = JSON.parse(tokenString);
     return userToken;
   };
 
-  const [token, setToken] = React.useState(getToken());
+  const [token, setToken] = useState(getToken());
 
-  const saveToken = (userToken) => {
-    localStorage.setItem("Token", JSON.stringify(userToken));
-    setToken(userToken);
+  const saveToken = (param) => {
+    localStorage.setItem("token", JSON.stringify(param));
+    setToken(param);
   };
 
   const deleteToken = () => {
-    localStorage.removeItem("Token");
+    localStorage.removeItem("token");
     setToken(null);
   };
+
+  const isAuthenticated = () => {
+    return !!getToken();
+  };
+
+  useEffect(() => {
+    setToken(getToken());
+  }, []);
 
   return {
     setToken: saveToken,
     token,
     deleteToken,
     getToken,
+    isAuthenticated,
   };
 }
 

@@ -1,5 +1,5 @@
 @mixin font-website($fontFamily) {
-  font-family: $fontFamily, "Open sans";
+  font-family: $fontFamily, "Open sans", "Amazon Ember", "Arial", "sans-serif";
 }
 
 body {
@@ -11,7 +11,6 @@ body {
 footer {
   margin-top: auto;
 }
-
 
 main {
   margin-top: 6rem;

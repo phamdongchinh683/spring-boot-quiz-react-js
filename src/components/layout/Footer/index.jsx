@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Layout/index.scss";
+import "../index.scss";
 import Navigation from "../../../mock/test.json";
 import EmailContext from "../../../contexts/Hooks/EmailContext";
 

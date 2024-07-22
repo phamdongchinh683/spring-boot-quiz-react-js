@@ -12,7 +12,7 @@ const DropDownNavigation = ({ routerDropdown, status, loginAdmin }) => {
             className="dropdown-content-link"
             key={routerDropdownItem.id}
           >
-            {routerDropdownItem["name-navigation"]}
+            {routerDropdownItem.nameNavigation}
           </Link>
         ))}
         <div className="nav-router-page" key="status">

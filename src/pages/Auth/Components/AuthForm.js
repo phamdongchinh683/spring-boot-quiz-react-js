@@ -1,18 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-import AuthContext from '../../../contexts/Hooks/AuthContext';
+import AuthContext from "../../../contexts/Hooks/AuthContext";
 
-const AuthForm = ({ swapForm }) => {
+const AuthForm = () => {
   return (
     <AuthContext>
-      {swapForm ? <AuthContext.LoginAccount /> : <AuthContext.SignUpAccount />}
+      <AuthContext.LoginAccount />
     </AuthContext>
   );
-};
-
-AuthForm.propTypes = {
-  swapForm: PropTypes.bool
 };
 
 export default AuthForm;

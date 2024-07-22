@@ -1,20 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Input from "../../../../../components/Forms/Input";
 import useTokens from "../../../../../jwt/useTokens";
 import Service from "../../../../../service/index";
-import AuthContext from "../../../../../contexts/Hooks/AuthContext";
-import { FlyAuth } from "../../../../../contexts";
-import { setUsername, setPassword } from "../../../../../redux/Auth/AuthSlice";
+import { AuthContext } from "../../../../../contexts";
+import { setUsername, setPassword } from "../../../../../redux/Auth";
+import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
 
 const LoginAccount = () => {
-  const [state, dispatchAuth] = React.useContext(FlyAuth);
+  const [state, dispatchAuth] = useContext(AuthContext);
   const { username, password } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
   const { setToken } = useTokens();
   const { Login } = Service();
-
   const inputUsername = (e) => {
     dispatch(setUsername(e.target.value));
   };
@@ -28,37 +28,36 @@ const LoginAccount = () => {
     if (!username || !password) {
       dispatchAuth({
         type: "error",
-        payload: "Please fill in all fields.",
+        payload: "Username or password is incorrect",
       });
       return;
     }
     try {
-      const token = await Login({
-        username: username,
-        password: password,
-      });
-      if (token.error) {
+      const token = await Login({ username, password });
 
+      if (!token) {
         dispatchAuth({ type: "error", payload: token.error });
       } else {
         setToken(token);
+        dispatch(setUsername(""));
+        dispatch(setPassword(""));
         dispatchAuth({ type: "show", payload: true });
+        window.location.reload();
       }
     } catch (error) {
-      console.error("Login failed:", error);
+      dispatchAuth({ type: "error", payload: error.response.data.message });
     }
   };
 
   const commonProps = {
-    linkText: "New customer?",
     setToken: setToken,
     error: state.error,
     userName: (
       <Input
-        type={"text"}
-        placeholder={"Username or Email"}
-        className={"input-box-placeholder"}
-        name={"username"}
+        type="text"
+        placeholder=""
+        className="input-box-placeholder"
+        name="username"
         value={username}
         onChange={inputUsername}
         required
@@ -66,29 +65,29 @@ const LoginAccount = () => {
     ),
     passWord: (
       <Input
-        type={"password"}
-        name={"password"}
+        type="password"
+        name="password"
         value={password}
-        placeholder={"Enter Your Password"}
-        className={"input-box-placeholder"}
+        placeholder=""
+        className="input-box-placeholder"
         onChange={inputPassword}
         required
       />
     ),
     button: (
       <Input
-        type={"button"}
-        value={"Login"}
-        className={"button-login"}
+        type="submit"
+        value="Login"
+        className="button-login"
         onClick={handleSubmit}
       />
     ),
   };
 
   return (
-    <AuthContext>
-      <AuthContext.LoginForm {...commonProps} />
-    </AuthContext>
+    <AuthFeature>
+      <AuthFeature.LoginForm {...commonProps} />
+    </AuthFeature>
   );
 };
 

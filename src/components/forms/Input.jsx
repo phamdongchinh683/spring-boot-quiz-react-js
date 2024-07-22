@@ -11,7 +11,9 @@ const Input = ({
     value,
     name,
     onSubmit,
-    required }) => {
+    required,
+    defaultValue,
+    checked }) => {
     return (
         <input
             type={type}
@@ -23,6 +25,8 @@ const Input = ({
             value={value}
             name={name}
             required={required}
+            defaultValue={defaultValue}
+            checked={checked}
         />
     )
 };
@@ -36,7 +40,9 @@ Input.propTypes = {
     className: PropTypes.string,
     value: PropTypes.string,
     name: PropTypes.string,
-    required: PropTypes.bool
+    required: PropTypes.bool,
+    defaultValue: PropTypes.string,
+    checked: PropTypes.bool
 };
 
 export default Input;

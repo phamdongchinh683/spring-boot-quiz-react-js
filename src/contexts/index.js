@@ -1,13 +1,7 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-const FlyAuth = createContext();
-const FlyFooter = createContext();
-const FlyPayment = createContext();
-const FlyAdmin = createContext();
+const AuthContext = createContext();
+const FooterContext = createContext();
+const ExamContext = createContext();
 
-export {
-    FlyAuth,
-    FlyFooter,
-    FlyPayment,
-    FlyAdmin
-};
+export { AuthContext, FooterContext, ExamContext };

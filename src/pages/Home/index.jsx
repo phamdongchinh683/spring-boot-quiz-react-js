@@ -1,11 +1,10 @@
 import React from "react";
-import TodoList from "../TodoList";
+
 const LandingPage = () => {
   return (
-    <>
-      <TodoList />
-    </>
-  );
-}
+    <div>
+      <h1>Hello World</h1>
+    </div>)
+};
 
 export default LandingPage;

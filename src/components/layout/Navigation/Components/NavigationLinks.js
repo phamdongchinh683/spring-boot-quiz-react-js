@@ -10,7 +10,7 @@ const NavigationLinks = ({ router, status, loginAdmin }) => {
       {router.map((routerItem) => (
         <li className="nav-router-page" key={routerItem.id}>
           <Link to={routerItem.linkRouter} className="nav-router-page-color">
-            {routerItem["name-navigation"]}
+            {routerItem.nameNavigation}
           </Link>
         </li>
       ))}

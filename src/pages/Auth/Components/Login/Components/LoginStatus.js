@@ -2,21 +2,21 @@ import React from "react";
 
 import NavigationLink from "../../../../../mock/test.json";
 import Guest from "./Guest";
-import { FlyAuth } from "../../../../../contexts/index";
+import { AuthContext } from "../../../../../contexts/index";
 import NavigationOfUser from "../../../../../components/Layout/Navigation/Components/NavigationOfUser";
 import useTokens from "../../../../../jwt/useTokens";
-import AuthContext from "../../../../../contexts/Hooks/AuthContext";
+import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
 
 const LoginStatus = () => {
-  const [state, dispatch] = React.useContext(FlyAuth);
+  const [state, dispatch] = React.useContext(AuthContext);
   const { token, setToken } = useTokens();
 
   const commonProps = {
     NavigationUser: NavigationLink.userRouter,
     showDropdownUser: (
-      <AuthContext.LoginSuccessful setToken={setToken} TextStatus={"Welcome"} />
+      <AuthFeature.LoginSuccessful setToken={setToken} TextStatus={"Welcome"} />
     ),
-    Status: <AuthContext.Logout />,
+    Status: <AuthFeature.Logout />,
   };
 
   React.useEffect(() => {
@@ -26,13 +26,13 @@ const LoginStatus = () => {
   }, [dispatch, token]);
 
   return (
-    <AuthContext>
+    <AuthFeature>
       {state.isLoggedIn ? (
         <NavigationOfUser {...commonProps} />
       ) : (
-        <Guest TextStatus={"Guest"} LinkTo={"login"} />
+        <Guest TextStatus={"Guest"} LinkTo={"/login"} />
       )}
-    </AuthContext>
+    </AuthFeature>
   );
 };
 

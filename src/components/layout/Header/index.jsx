@@ -2,27 +2,21 @@ import React from "react";
 
 import "./index.scss";
 import NavigationList from "../../../mock/test.json";
-import Logo from "../../../assets/Logo/logo.png";
-import LogoPage from "./Components/logo";
+import Logo from "../Header/Components/Logo";
 import AuthFormComponent from "../../../pages/Auth/index";
 import NavigationLinks from "../Navigation/Components/NavigationLinks";
 import NavigationLinksMedia from "../Navigation/Components/DropDownNavigation";
-import Admin from "../../../pages/Admin/Components/Admin";
 
 function Header() {
   return (
     <nav>
-      <LogoPage image={Logo} />
+      <Logo image={""} />
       <NavigationLinks
         router={NavigationList.router}
-        status={<AuthFormComponent />}
-        loginAdmin={<Admin TextStatus={'Admin'}
-          LinkTo={'admin'} />} />
+        status={<AuthFormComponent />} />
       <NavigationLinksMedia
         routerDropdown={NavigationList.router}
-        status={<AuthFormComponent />}
-        loginAdmin={<Admin TextStatus={'Admin'}
-          LinkTo={'admin'} />} />
+        status={<AuthFormComponent />} />
     </nav>
   );
 };

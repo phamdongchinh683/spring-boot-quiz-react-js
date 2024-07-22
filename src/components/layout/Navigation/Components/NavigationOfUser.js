@@ -12,7 +12,7 @@ const NavigationOfUser = ({ NavigationUser, showDropdownUser, Status }) => {
             className="dropdown-content-link-user"
             key={NavigationUserItem.id}
           >
-            {NavigationUserItem["name-navigation"]}
+            {NavigationUserItem.nameNavigation}
           </Link>
         ))}
         <div key="status">{Status}</div>

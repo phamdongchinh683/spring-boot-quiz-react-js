@@ -13,4 +13,5 @@ LoginSuccessful.propTypes = {
   setToken: PropTypes.func,
   TextStatus: PropTypes.string,
 };
+
 export default LoginSuccessful;
