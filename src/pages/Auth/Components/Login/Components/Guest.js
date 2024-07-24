@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import icon from "../../../../../assets/Icon/guest.svg";
+import icon from "../../../../../assets/icon/guest.svg";
 import "../index.scss";
 
 const Guest = ({ TextStatus, LinkTo }) => {

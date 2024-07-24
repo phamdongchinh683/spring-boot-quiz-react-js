@@ -3,7 +3,7 @@ import React from "react";
 import NavigationLink from "../../../../../mock/test.json";
 import Guest from "./Guest";
 import { AuthContext } from "../../../../../contexts/index";
-import NavigationOfUser from "../../../../../components/Layout/Navigation/Components/NavigationOfUser";
+import NavigationOfUser from "../../../../../components/layout/Navigation/Components/NavigationOfUser";
 import useTokens from "../../../../../jwt/useTokens";
 import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
 

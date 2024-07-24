@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 
 import "./index.scss";
 import Header from "./Header/index";
-import Footer from "./Footer/index";
 function Layout() {
   return (
     <div className="container-body">
@@ -11,7 +10,6 @@ function Layout() {
       <main>
         <Outlet />
       </main>
-      <footer><Footer /></footer>
     </div>
   );
 };

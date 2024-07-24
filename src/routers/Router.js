@@ -7,7 +7,7 @@ import {
 import ProtectedRoute from "./ProtectedRoute.js";
 import AuthForm from "../pages/Auth/Components/AuthForm.js";
 import useTokens from "../jwt/useTokens.js";
-import Layout from "../components/Layout/index.jsx";
+import Layout from "../components/layout";
 import Home from "../pages/Home/index";
 import NotFound from "../pages/NotFound/index.jsx";
 import Exam from "../pages/Exam/index.jsx";
