@@ -1,10 +1,12 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 
 const InputInfo = ({ info, defaultValue, placeholder, disabled, type, onChange, min, max, value, key }) => {
     return (
-        <div className="form-group-info">
-            <span className="profile-info-text">{info}</span>
+        <div className="form-group-info mb-4">
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+                {info}:
+            </label>
             <input
                 type={type}
                 defaultValue={defaultValue}
@@ -12,10 +14,13 @@ const InputInfo = ({ info, defaultValue, placeholder, disabled, type, onChange, 
                 onChange={onChange}
                 value={value}
                 placeholder={placeholder}
-                className="profile-info-input"
                 min={min}
                 max={max}
                 key={key}
+                className={`profile-info-input w-full p-2 rounded-md border focus:ring-2 focus:ring-blue-500 focus:outline-none transition ${disabled
+                        ? "bg-gray-100 cursor-not-allowed"
+                        : "bg-white border-gray-300 hover:border-blue-500"
+                    }`}
             />
         </div>
     );
@@ -31,7 +36,7 @@ InputInfo.propTypes = {
     value: PropTypes.string,
     onChange: PropTypes.func,
     key: PropTypes.string,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
 };
 
 export default InputInfo;

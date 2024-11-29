@@ -1,22 +1,21 @@
+import PropTypes from "prop-types";
 import React from "react";
-import PropTypes from 'prop-types';
 
-import handler from '../../../../handler/index';
-import Input from '../../../../components/Forms/Input';
+import Input from "../../../../components/forms/Input";
+import handler from "../../../../handler/index";
 import "../../../../pages/Exam/index.scss";
 
-const ExamQuestion = ({ questions, handleFunction }) => {
+const ExamQuestion = ({ questions, handleFunction, results }) => {
     const { parseAnswer } = handler();
-
     return (
         <div className="rounded-md border border-[#ebebeb] shadow-xl mt-2 pt-1">
             {questions.map((question, index) => {
-                const parsedAnswers = parseAnswer(question.answer_list);
+                const parsedAnswers = parseAnswer(question.answerList);
                 return (
                     <div key={question.id} className="grid grid-rows-1 gap-1 py-2">
                         <div className="flex px-8">
                             <h1>{index + 1}.</h1>
-                            <span className="text-slate-500 ml-2">{question.question_content}</span>
+                            <span className="text-slate-500 ml-2">{question.questionContent}</span>
                         </div>
                         <div className="grid grid-rows-1 gap-3 ml-14">
                             {Object.entries(parsedAnswers).map(([key, value]) => (
@@ -24,8 +23,10 @@ const ExamQuestion = ({ questions, handleFunction }) => {
                                     <Input
                                         type="radio"
                                         name={`question-${question.id}`}
-                                        onClick={() => handleFunction(question.id, key.toLowerCase())}
-                                        className={"cursor-pointer"}
+                                        onChange={() =>
+                                            handleFunction(question.id, key.toLowerCase())
+                                        }
+                                        className="cursor-pointer"
                                     />
                                     <span>{value}</span>
                                 </div>
@@ -43,11 +44,17 @@ ExamQuestion.propTypes = {
     questions: PropTypes.arrayOf(
         PropTypes.shape({
             id: PropTypes.string.isRequired,
-            question_content: PropTypes.string.isRequired,
-            answer_list: PropTypes.string.isRequired
+            questionContent: PropTypes.string.isRequired,
+            answerList: PropTypes.string.isRequired,
         })
     ).isRequired,
     handleFunction: PropTypes.func.isRequired,
+    results: PropTypes.arrayOf(
+        PropTypes.shape({
+            questionId: PropTypes.string.isRequired,
+            result: PropTypes.string.isRequired,
+        })
+    ).isRequired,
 };
 
 export default ExamQuestion;

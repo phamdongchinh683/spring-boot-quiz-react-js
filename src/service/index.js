@@ -1,6 +1,6 @@
 import axios from "axios";
 import api from "../api";
-import useTokens from "../jwt/useTokens";
+import useTokens from "../jwt";
 
 const Service = () => {
   const { getToken } = useTokens();
@@ -17,7 +17,8 @@ const Service = () => {
     submitResultApi,
     examHistoryApi,
   } = api;
-  const token = getToken();
+
+  const token = getToken().token;
 
   const Login = async (credentials) => {
     try {
@@ -32,15 +33,29 @@ const Service = () => {
         throw new Error("Login failed");
       }
     } catch (error) {
+      console.log(error);
       throw error;
     }
   };
-  // profile
-  const getProfile = async () => {
+
+  const examList = async () => {
     try {
-      const response = await axios.get(profileApi, {
+      const response = await axios.get(testListApi, {
         headers: {
-          token: token.data,
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      return response.data.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const getProfile = async (username) => {
+    try {
+      const response = await axios.get(profileApi + `/${username}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
         },
       });
       return response.data.data;
@@ -53,14 +68,10 @@ const Service = () => {
     try {
       const res = await axios.post(removeProfileImageApi, id, {
         headers: {
-          token: token.data,
+          "Content-Type": "application/json",
         },
       });
-      if (!res) {
-        return res.data;
-      } else {
-        return res.data;
-      }
+      return res.data;
     } catch (error) {
       throw error;
     }
@@ -70,7 +81,7 @@ const Service = () => {
     try {
       const res = await axios.post(updateProfileApi, credentials, {
         headers: {
-          token: token.data,
+          "Content-Type": "application/json",
         },
       });
       return res.data;
@@ -83,7 +94,7 @@ const Service = () => {
     try {
       const res = await axios.post(updatePasswordApi, credentials, {
         headers: {
-          token: token.data,
+          "Content-Type": "application/json",
         },
       });
       return res.data;
@@ -104,6 +115,8 @@ const Service = () => {
       process.env.REACT_APP_CLOUDINARY_UPLOAD_PRESET_NAME
     );
     data.append("cloud_name", process.env.REACT_APP_CLOUDINARY_CLOUD_NAME);
+    data.append("folder", "tourImages");
+
     try {
       const res = await axios.post(uploadImageApi, data);
       return res.data.public_id;
@@ -125,28 +138,14 @@ const Service = () => {
     }
   };
 
-  //exam
-  const examList = async () => {
-    try {
-      const response = await axios.get(testListApi, {
-        headers: {
-          token: token.data,
-        },
-      });
-      return response.data.data;
-    } catch (error) {
-      throw error;
-    }
-  };
-
   const takeExam = async (id) => {
     try {
-      const res = await axios.post(
+      const res = await axios.get(
         questionApi + `${id}`,
         {},
         {
           headers: {
-            token: token.data,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -156,14 +155,18 @@ const Service = () => {
     }
   };
 
-  const submitResults = async (param, id) => {
+  const submitResults = async (param, examId, username) => {
     try {
-      const res = await axios.post(submitResultApi + `${id}`, param, {
-        headers: {
-          token: token.data,
-        },
-      });
-      return res.data;
+      const res = await axios.post(
+        submitResultApi + `${examId}/${username}`,
+        param,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return res.data.data.totalScore;
     } catch (error) {
       return error.response.data.message;
     }
@@ -173,7 +176,7 @@ const Service = () => {
     try {
       const res = await axios.get(examHistoryApi, {
         headers: {
-          token: token.data,
+          "Content-Type": "application/json",
         },
       });
       return res.data.data;

@@ -1,8 +1,8 @@
+import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import Handler from '../../../../../../handler';
 import ExpiredNotice from '../ExpiredNotice/';
 import ShowCounter from '../ShowCounter';
-import PropTypes from 'prop-types';
-import Handler from '../../../../../../handler';
 
 const CountdownTimer = ({ targetDate, submitAnswer }) => {
     const { useCountdown } = Handler();
@@ -13,9 +13,9 @@ const CountdownTimer = ({ targetDate, submitAnswer }) => {
     useEffect(() => {
         if (hours + minutes + seconds <= 0 && !hasSubmitted.current) {
             hasSubmitted.current = true;
-            setTimeExpired(true); 
+            setTimeExpired(true);
             setTimeout(() => {
-                submitAnswer(); 
+                submitAnswer();
             }, 1000);
         }
     }, [hours, minutes, seconds, submitAnswer]);

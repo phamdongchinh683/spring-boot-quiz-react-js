@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function useTokens() {
   const getToken = () => {
     const tokenString = localStorage.getItem("token");
-    const userToken = JSON.parse(tokenString);
-    return userToken;
+    try {
+      return JSON.parse(tokenString) || {};
+    } catch {
+      return {};
+    }
   };
 
-  const [token, setToken] = useState(getToken());
+  const [token, setToken] = useState(getToken()?.token || null);
 
   const saveToken = (param) => {
     localStorage.setItem("token", JSON.stringify(param));
-    setToken(param);
+    setToken(param?.token || null);
   };
 
   const deleteToken = () => {
@@ -20,19 +23,22 @@ function useTokens() {
   };
 
   const isAuthenticated = () => {
-    return !!getToken();
+    return !!token;
   };
 
   useEffect(() => {
-    setToken(getToken());
-  }, []);
+    const storedToken = getToken()?.token || null;
+    if (storedToken !== token) {
+      setToken(storedToken);
+    }
+  }, [token]);
 
   return {
     setToken: saveToken,
-    token,
     deleteToken,
     getToken,
     isAuthenticated,
+    token,
   };
 }
 

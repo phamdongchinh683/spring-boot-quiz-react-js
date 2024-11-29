@@ -1,7 +1,7 @@
 import React from 'react';
 
-import useTokens from '../../../../jwt/useTokens';
-import Input from '../../../../components/Forms/Input';
+import useTokens from '../../../../jwt';
+import Input from '../../../../components/forms/Input';
 
 const Logout = () => {
     const { deleteToken } = useTokens();

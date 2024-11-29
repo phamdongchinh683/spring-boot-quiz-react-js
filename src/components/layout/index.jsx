@@ -6,10 +6,8 @@ import Header from "./Header/index";
 function Layout() {
   return (
     <div className="container-body">
-      <header><Header /></header>
-      <main>
-        <Outlet />
-      </main>
+      <Header />
+      <Outlet />
     </div>
   );
 };

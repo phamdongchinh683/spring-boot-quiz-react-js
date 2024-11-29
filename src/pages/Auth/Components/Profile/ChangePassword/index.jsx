@@ -6,7 +6,7 @@ import {
     setPassword, setNewPassword, setErrorMessage,
     setResponseMessage,
 } from "../../../../../redux/Auth";
-import Input from '../../../../../components/Forms/Input';
+import Input from '../../../../../components/forms/Input';
 import { Link, useLocation } from 'react-router-dom';
 import AuthFeature from '../../../../../contexts/Hooks/AuthContext';
 import Service from "../../../../../service";

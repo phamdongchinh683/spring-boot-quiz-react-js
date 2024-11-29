@@ -43,4 +43,5 @@ ExamFeature.ExamInfo = ExamInfo;
 ExamFeature.ExamQuestion = ExamQuestion;
 ExamFeature.CountdownTimer = CountdownTimer;
 ExamFeature.ExamResult = ExamScore;
+
 export default ExamFeature;

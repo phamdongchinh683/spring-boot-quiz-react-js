@@ -1,24 +1,19 @@
 import React from "react";
-
-import "./index.scss";
-import NavigationList from "../../../mock/test.json";
+import NavigationLinks from "../../../pages/Auth/Components/Login/Components/LoginStatus/index";
 import Logo from "../Header/Components/Logo";
-import AuthFormComponent from "../../../pages/Auth/index";
-import NavigationLinks from "../Navigation/Components/NavigationLinks";
-import NavigationLinksMedia from "../Navigation/Components/DropDownNavigation";
 
 function Header() {
   return (
-    <nav>
-      <Logo image={""} />
-      <NavigationLinks
-        router={NavigationList.router}
-        status={<AuthFormComponent />} />
-      <NavigationLinksMedia
-        routerDropdown={NavigationList.router}
-        status={<AuthFormComponent />} />
-    </nav>
+    <header className="flex items-center justify-between bg-blue-600 text-white p-4 shadow-md">
+      <div className="flex items-center gap-4">
+        <Logo image={""} />
+        <h1 className="text-2xl font-bold">Spring boot - React js</h1>
+      </div>
+      <nav>
+        <NavigationLinks />
+      </nav>
+    </header>
   );
-};
+}
 
 export default Header;

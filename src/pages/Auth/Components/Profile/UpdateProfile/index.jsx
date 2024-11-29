@@ -22,9 +22,9 @@ import {
 } from "../../../../../redux/Auth";
 import Service from "../../../../../service";
 import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
-import Input from "../../../../../components/Forms/Input";
+import Input from "../../../../../components/forms/Input";
 import InputInfo from "../InputInfo";
-import DropDown from "../../../../../components/Forms/DropDown";
+import DropDown from "../../../../../components/forms/DropDown";
 import handler from '../../../../../handler/index';
 import "../index.scss"
 

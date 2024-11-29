@@ -1,15 +1,17 @@
-import React, { useRef, useEffect, useState } from "react";
-import { useParams, useLocation, useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-import { setQuestions, setResults } from "../../../../redux/Exam";
-import Service from "../../../../service";
-import Input from '../../../../components/Forms/Input';
 import ExamFeature from '../../../../contexts/Hooks/ExamContext';
 import Handler from "../../../../handler";
+import useTokens from "../../../../jwt";
+import { setQuestions, setResults } from "../../../../redux/Exam";
+import Service from "../../../../service";
 
 const TakeExam = () => {
-    const { formatDate, parseTime, formatTime } = Handler();
+    const { parseTime } = Handler();
+    const { token } = useTokens();
     const { takeExam, submitResults } = Service();
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -19,7 +21,6 @@ const TakeExam = () => {
     const { questions, results } = useSelector((state) => state.exam);
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    const startTime = Date.now();
 
     const getQuestion = async () => {
         if (!checkCall.current) {
@@ -33,27 +34,28 @@ const TakeExam = () => {
         let examTime = new Date().getTime() + parseTime(param);
         return examTime;
     };
-    const timerEnd = timeEnd(state.time_allowed);
+    const timerEnd = timeEnd(state.timeAllowed);
 
     useEffect(() => {
         getQuestion();
     }, []);
 
     const chooseAnswer = (questionId, value) => {
-        const newResults = results.some(result => result.questionId === questionId)
-            ? results.map(result =>
+        const normalizedValue = value.toLowerCase();
+        const newResults = results.some((result) => result.questionId === questionId)
+            ? results.map((result) =>
                 result.questionId === questionId
-                    ? { ...result, result: value }
+                    ? { ...result, result: normalizedValue }
                     : result
             )
             : [
                 ...results,
                 {
-                    questionId: questionId,
-                    result: value,
-                    examDate: formatDate(new Date()),
-                }
+                    id: questionId,
+                    answer: normalizedValue,
+                },
             ];
+
         dispatch(setResults(newResults));
     };
 
@@ -67,10 +69,8 @@ const TakeExam = () => {
         setIsSubmitted(true);
 
         try {
-            let totalTakeExam = Date.now() - startTime;
-            let examTime = formatTime(totalTakeExam);
-
-            const submit = await submitResults({ results, examTime, examDate: formatDate(new Date()) }, id);
+            const decoded = jwtDecode(token)
+            const submit = await submitResults(results, id, decoded.sub);
             if (submit.status !== "success") {
                 dispatch(setResults([]));
                 navigate(`/exam/take_exam/${id}/score`, { state: { score: submit } });

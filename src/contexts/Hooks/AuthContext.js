@@ -2,12 +2,11 @@ import React, { useReducer } from "react";
 
 import { AuthContext } from "../index";
 import Logout from "../../pages/Auth/Components/Logout";
-import LoginSuccessful from "../../pages/Auth/Components/Login/Components/LoginSuccessful";
 import LoginAccount from "../../pages/Auth/Components/Login/Components/LoginAccount";
-import LoginStatus from "../../pages/Auth/Components/Login/Components/LoginStatus";
 import LoginForm from "../../pages/Auth/Components/Login";
 import ProfileImage from "../../pages/Auth/Components/Profile/ProfileImage";
 import Profile from "../../pages/Auth/Components/Profile";
+import Guest from "../../pages/Auth/Components/Guest/Guest";
 
 const AuthFeature = (props) => {
   const initialState = {
@@ -44,10 +43,9 @@ const AuthFeature = (props) => {
 
 AuthFeature.LoginForm = LoginForm;
 AuthFeature.Logout = Logout;
-AuthFeature.LoginStatus = LoginStatus;
 AuthFeature.LoginAccount = LoginAccount;
-AuthFeature.LoginSuccessful = LoginSuccessful;
 AuthFeature.ProfileImage = ProfileImage;
 AuthFeature.Profile = Profile;
+AuthFeature.Guest = Guest;
 
 export default AuthFeature;

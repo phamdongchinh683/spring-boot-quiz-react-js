@@ -1,52 +1,58 @@
-import React from 'react';
-
+import PropTypes from "prop-types";
+import React from "react";
 import "../Profile/index.scss";
-import PropTypes from 'prop-types';
 
-const Profile = ({ detail, profileImage, profileName, titleName, endPoints, detailContent, button, handleImage, error, response, handleError }) => {
+const Profile = ({
+  detail,
+  profileImage,
+  profileName,
+  titleName,
+  endPoints,
+  detailContent,
+  button,
+  handleImage,
+  error,
+  response,
+  handleError,
+}) => {
   return (
-    <div className="container-profile">
-      <h1 className="title-page-h1">{titleName}</h1>
-      <div>
-        <hr></hr>
-      </div>
-      <div className="row">
-        <div className="container-profile-image">
-          <div className="profile-image-center">
+    <div className="container-profile p-8 bg-gray-50 shadow-md rounded-lg transition-all duration-300">
+      <h1 className="text-3xl font-bold text-blue-600 mb-4">{titleName}</h1>
+      <hr className="mb-6 border-gray-300" />
+      <div className="flex flex-col md:flex-row gap-6">
+        <div className="container-profile-image flex flex-col items-center gap-4">
+          <div className="profile-image-center animate-fade-in">
             {profileImage}
-            {profileName}
+            <h2 className="text-xl font-medium">{profileName}</h2>
             {handleImage}
           </div>
         </div>
-        <div className="personal-info">
-          <div className="container-profile-info-nav">
-            <h2>{detailContent}</h2>
-            <div>
-              {error && (
-                <div className="alert alert-info alert-dismissible">
-                  {handleError}
-                  {response}
-                </div>
-              )}
-            </div>
-            <div className='container-profile-nav'>
+        <div className="personal-info w-full">
+          <div className="container-profile-info-nav mb-4">
+            <h2 className="text-2xl font-semibold">{detailContent}</h2>
+            {error && (
+              <div className="alert alert-info p-3 text-red-600 bg-red-100 rounded-md mb-4 animate-slide-in">
+                {handleError}
+                {response}
+              </div>
+            )}
+            <div className="container-profile-nav flex gap-4 flex-wrap">
               {endPoints}
             </div>
           </div>
-          <div className="container-personal-info">
-            <form className="form-horizontal">
+          <div className="container-personal-info bg-white p-4 rounded-md shadow-sm">
+            <form className="form-horizontal grid gap-4">
               {detail}
             </form>
           </div>
-          <div className="container-profile-btn">
+          <div className="container-profile-btn mt-6 flex gap-4 justify-end">
             {button}
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
 
 Profile.propTypes = {
   detail: PropTypes.arrayOf(PropTypes.element).isRequired,
@@ -60,7 +66,7 @@ Profile.propTypes = {
   error: PropTypes.bool,
   response: PropTypes.string,
   handleError: PropTypes.object,
-  profileName: PropTypes.string
+  profileName: PropTypes.string,
 };
 
 export default Profile;
