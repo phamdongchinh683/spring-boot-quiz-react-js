@@ -33,7 +33,6 @@ const Service = () => {
         throw new Error("Login failed");
       }
     } catch (error) {
-      console.log(error);
       throw error;
     }
   };
@@ -43,6 +42,7 @@ const Service = () => {
       const response = await axios.get(testListApi, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
       return response.data.data;
@@ -56,10 +56,13 @@ const Service = () => {
       const response = await axios.get(profileApi + `/${username}`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
       });
+      console.log(response);
       return response.data.data;
     } catch (error) {
+      console.log(error);
       throw error;
     }
   };
@@ -146,6 +149,7 @@ const Service = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
         }
       );
@@ -162,6 +166,7 @@ const Service = () => {
         param,
         {
           headers: {
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
@@ -176,6 +181,7 @@ const Service = () => {
     try {
       const res = await axios.get(examHistoryApi, {
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
