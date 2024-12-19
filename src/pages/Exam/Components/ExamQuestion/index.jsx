@@ -2,8 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 
 import Input from "../../../../components/forms/Input";
-import handler from "../../../../handler/index";
 import "../../../../pages/Exam/index.scss";
+import handler from "../../../../utils/index";
 
 const ExamQuestion = ({ questions, handleFunction, results }) => {
     const { parseAnswer } = handler();

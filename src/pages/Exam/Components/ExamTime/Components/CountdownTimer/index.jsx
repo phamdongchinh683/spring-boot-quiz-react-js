@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
-import Handler from '../../../../../../handler';
+import Handler from '../../../../../../utils';
 import ExpiredNotice from '../ExpiredNotice/';
 import ShowCounter from '../ShowCounter';
 

@@ -1,12 +1,10 @@
 import React from 'react';
 
-import useTokens from '../../../../jwt';
 import Input from '../../../../components/forms/Input';
+import useTokens from '../../../../jwt';
 
 const Logout = () => {
     const { deleteToken } = useTokens();
-    // const navigate = useNavigate();
-
     const handleLogout = () => {
         window.location.reload();
         deleteToken();

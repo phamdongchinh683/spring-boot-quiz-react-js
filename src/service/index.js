@@ -84,6 +84,7 @@ const Service = () => {
     try {
       const res = await axios.post(updateProfileApi, credentials, {
         headers: {
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
@@ -93,13 +94,18 @@ const Service = () => {
     }
   };
 
-  const updatePassword = async (credentials) => {
+  const updatePassword = async (credentials, username) => {
     try {
-      const res = await axios.post(updatePasswordApi, credentials, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const res = await axios.post(
+        updatePasswordApi + `${username}`,
+        credentials,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
       return res.data;
     } catch (error) {
       throw error;
@@ -135,7 +141,7 @@ const Service = () => {
           "Content-Type": "application/json",
         },
       });
-      return res.data.results;
+      return res.data;
     } catch (error) {
       throw error;
     }
@@ -143,16 +149,12 @@ const Service = () => {
 
   const takeExam = async (id) => {
     try {
-      const res = await axios.get(
-        questionApi + `${id}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await axios.get(questionApi + `${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
       return res.data.data;
     } catch (error) {
       return error.response.data.message;
@@ -171,7 +173,7 @@ const Service = () => {
           },
         }
       );
-      return res.data.data.totalScore;
+      return res.data;
     } catch (error) {
       return error.response.data.message;
     }

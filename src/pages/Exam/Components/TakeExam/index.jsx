@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import ExamFeature from '../../../../contexts/Hooks/ExamContext';
-import Handler from "../../../../handler";
 import useTokens from "../../../../jwt";
 import { setQuestions, setResults } from "../../../../redux/Exam";
 import Service from "../../../../service";
+import Handler from "../../../../utils";
 
 const TakeExam = () => {
     const { parseTime } = Handler();
@@ -73,10 +73,10 @@ const TakeExam = () => {
             const submit = await submitResults(results, id, decoded.sub);
             if (submit.status !== "success") {
                 dispatch(setResults([]));
-                navigate(`/exam/take_exam/${id}/score`, { state: { score: submit } });
+                navigate(`/exam/take_exam/${id}/score`, { state: { result: submit.data } });
             } else {
                 dispatch(setResults([]));
-                navigate(`/exam/take_exam/${id}/score`, { state: { score: submit.data } });
+                navigate(`/exam/take_exam/${id}/score`, { state: { result: submit.data } });
             }
         } catch (error) {
             console.log(error.response.data);

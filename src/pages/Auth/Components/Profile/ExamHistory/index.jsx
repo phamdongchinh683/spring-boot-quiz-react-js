@@ -1,8 +1,8 @@
 import React from "react";
 
 import Service from '../../../../../service/index';
-import Handler from "../../../../../handler";
-import "../index.scss"
+import Handler from "../../../../../utils";
+import "../index.scss";
 
 const ExamHistory = () => {
     const { examHistory } = Service();

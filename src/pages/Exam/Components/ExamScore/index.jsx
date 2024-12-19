@@ -4,8 +4,9 @@ import { useLocation } from "react-router-dom";
 
 const ExamScore = () => {
     const { state } = useLocation();
-    const totalPoint = state?.score;
-
+    const totalPoint = state?.result.totalScore;
+    const totalNumberCorrect = state?.result.numberCorrect;
+    const totalNumberIncorrect = state?.result.numberIncorrect;
     if (typeof totalPoint === "string") {
         return (
             <div className="flex justify-center items-center h-screen">
@@ -18,6 +19,7 @@ const ExamScore = () => {
                 <div className="relative flex flex-col justify-center items-center h-40 w-40 bg-red-100 border-dashed border-4 border-red-500 rounded-full animate-pulse">
                     <h1 className="text-xl font-bold text-red-600">Score</h1>
                     <span className="text-3xl font-semibold text-red-600">{totalPoint}</span>
+                    <span className="text-2xl font-semibold text-red--600">{totalNumberIncorrect}</span>
                 </div>
             </div>
         );
@@ -27,6 +29,9 @@ const ExamScore = () => {
                 <div className="relative flex flex-col justify-center items-center h-40 w-40 bg-lime-100 border-dashed border-4 border-lime-500 rounded-full shadow-lg animate-bounce">
                     <h1 className="text-xl font-bold text-lime-600">Score</h1>
                     <span className="text-3xl font-semibold text-lime-600">{totalPoint}</span>
+                    <span className="text-2xl font-semibold text-lime-600">{totalNumberCorrect}</span>
+                    <span className="text-2xl font-semibold text-lime-600">{totalNumberIncorrect}</span>
+
                 </div>
             </div>
         );

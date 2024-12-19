@@ -8,7 +8,7 @@ const LoginStatus = () => {
     return (
         <>
             {token ? (
-                <NavigationLinks status={"Welcome"} />
+                <NavigationLinks status={"Profile"} />
             ) :
                 <NavigationLinks status={<Guest TextStatus={"Guest"} />} />}
         </>

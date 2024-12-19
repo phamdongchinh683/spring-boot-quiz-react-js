@@ -1,37 +1,36 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 
+import DropDown from "../../../../../components/forms/DropDown";
+import Input from "../../../../../components/forms/Input";
+import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
 import {
-    setPassword,
-    setAge,
-    setPublicIdImage,
-    setErrorMessage,
-    setResponseMessage,
     setAddress,
+    setAge,
+    setBirthDay,
     setCity,
     setEmail,
+    setErrorMessage,
     setFirstName,
+    setGender,
     setLastName,
     setNewPassword,
+    setPassword,
     setPhoneNumber,
-    setGender,
-    setBirthDay,
+    setPublicIdImage,
+    setResponseMessage,
 } from "../../../../../redux/Auth";
 import Service from "../../../../../service";
-import AuthFeature from "../../../../../contexts/Hooks/AuthContext";
-import Input from "../../../../../components/forms/Input";
+import "../index.scss";
 import InputInfo from "../InputInfo";
-import DropDown from "../../../../../components/forms/DropDown";
-import handler from '../../../../../handler/index';
-import "../index.scss"
 
 const UpdateProfile = () => {
     const { state } = useLocation();
+    console.log(state);
     const dispatch = useDispatch();
-    const { formatDate } = handler();
     const [file, setFile] = useState(null);
     const [province, setProvinces] = useState([]);
     const checkFetch = React.useRef(false);
@@ -54,24 +53,22 @@ const UpdateProfile = () => {
     const profile = state?.data;
 
 
-    const currentBirthday = formatDate(profile.birth_day)
-
     useEffect(() => {
         if (profile) {
-            dispatch(setFirstName(profile.first_name));
-            dispatch(setLastName(profile.last_name));
+            dispatch(setFirstName(profile.firstName));
+            dispatch(setLastName(profile.lastName));
             dispatch(setPassword(profile.password));
             dispatch(setNewPassword(""));
             dispatch(setAge(profile.age));
             dispatch(setEmail(profile.email));
-            dispatch(setPhoneNumber(profile.phone_number));
+            dispatch(setPhoneNumber(profile.phoneNumber));
             dispatch(setCity(profile.city_name));
             dispatch(setAddress(profile.address));
             dispatch(setGender(profile.gender));
-            dispatch(setBirthDay(currentBirthday));
+            dispatch(setBirthDay(profile.birth_day));
             dispatch(setPublicIdImage(profile.image));
         }
-    }, [currentBirthday, dispatch, profile]);
+    }, [dispatch, profile]);
 
     const provinceApi = async () => {
         if (!checkFetch.current) {
@@ -113,7 +110,7 @@ const UpdateProfile = () => {
                     dispatch(setGender(profile.gender));
                     break;
                 case 'birthday':
-                    dispatch(setBirthDay(currentBirthday));
+                    dispatch(setBirthDay());
                     break;
                 default:
                     break;
@@ -248,7 +245,7 @@ const UpdateProfile = () => {
             <InputInfo
                 type="date"
                 info="Birthday"
-                defaultValue={currentBirthday}
+                defaultValue={birthday}
                 onChange={(e) => handleInputChange('birthday', e.target.value)}
             />,
             <DropDown
@@ -282,21 +279,21 @@ const UpdateProfile = () => {
         detailContent: "Personal Detail",
         button: [<Input
             type={"button"}
-            className={"btn btn-primary"}
+            className="btn-toggle bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition"
             value={"Save Changes"}
             onClick={saveChanges}
         />,
         <Link to="/profile" >
             <Input
                 type={"button"}
-                className={"btn btn-default"}
+                className="btn-toggle bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition"
                 defaultValue={"Cancel"}
             />
         </Link >],
         handleImage: [
             <span>Upload a different photo...</span>,
             <Input type={"file"} onChange={handleFileChange}
-                className={"block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"} />,
+                className={"block w-full text-sm text-slate- file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"} />,
             <Input type={"button"} onClick={removeImage} value="Remove image" />
         ],
         error: error,

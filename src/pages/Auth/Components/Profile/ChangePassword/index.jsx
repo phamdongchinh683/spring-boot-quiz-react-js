@@ -1,22 +1,26 @@
+import { jwtDecode } from "jwt-decode";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import InputInfo from '../InputInfo/index';
+import { Link, useLocation } from 'react-router-dom';
+import Input from '../../../../../components/forms/Input';
+import AuthFeature from '../../../../../contexts/Hooks/AuthContext';
+import useTokens from "../../../../../jwt";
 import {
-    setPassword, setNewPassword, setErrorMessage,
+    setErrorMessage,
+    setNewPassword,
+    setPassword,
     setResponseMessage,
 } from "../../../../../redux/Auth";
-import Input from '../../../../../components/forms/Input';
-import { Link, useLocation } from 'react-router-dom';
-import AuthFeature from '../../../../../contexts/Hooks/AuthContext';
 import Service from "../../../../../service";
-
+import InputInfo from '../InputInfo/index';
 const ChangePassword = () => {
     const { password, newPassword, response, error } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const { updatePassword } = Service();
     const { state } = useLocation();
     const profile = state?.data;
+    const { token } = useTokens();
 
     const handleInputChange = (field, value) => {
         if (value === profile[field]) {
@@ -47,12 +51,14 @@ const ChangePassword = () => {
     const changePassword = async (e) => {
         e.preventDefault();
         try {
-            const update = await updatePassword({ password, newPassword });
-            if (update.status !== "success") {
+            const decoded = jwtDecode(token)
+            const update = await updatePassword({ password, newPassword }, decoded.sub);
+            if (update.data !== "Please check current password") {
                 dispatch(setErrorMessage(true));
-                dispatch(setResponseMessage(update.data));
+                dispatch(setResponseMessage(update.message));
             } else {
-                dispatch(setErrorMessage(true));
+                dispatch(setErrorMessage(false));
+                alert(update.message);
                 dispatch(setResponseMessage(update.message));
             }
         } catch (error) {
@@ -63,22 +69,22 @@ const ChangePassword = () => {
 
     const commonProps = {
         detail: [
-            <InputInfo type={"password"} placeholder={"Current password"} onChange={(e) => handleInputChange('password', e.target.value)}
+            <InputInfo info="Current password" type={"password"} placeholder={"Current password"} onChange={(e) => handleInputChange('password', e.target.value)}
             />,
-            <InputInfo type={"password"} placeholder={"New password"} onChange={(e) => handleInputChange('newPassword', e.target.value)}
+            <InputInfo info="New password" type={"password"} placeholder={"New password"} onChange={(e) => handleInputChange('newPassword', e.target.value)}
             />,
         ],
         profileImage: <AuthFeature.ProfileImage avatar={profile.image} />,
         button: [<Input
             type={"button"}
-            className={"btn btn-primary"}
+            className="btn-toggle bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700"
             value={"Save Changes"}
             onClick={changePassword}
         />,
         <Link to="/profile" >
             <Input
                 type={"button"}
-                className={"btn btn-default"}
+                className="btn-toggle bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700"
                 defaultValue={"Cancel"}
             />
         </Link >],
@@ -88,9 +94,8 @@ const ChangePassword = () => {
         response: response,
         handleError: <Input
             type={"button"}
-            className={"panel-close close"}
+            className={"panel-close close m-1"}
             onClick={() => dispatch(setErrorMessage(false))}
-            value={"x"}
         />,
     }
 

@@ -41,9 +41,11 @@ const Profile = ({
             </div>
           </div>
           <div className="container-personal-info bg-white p-4 rounded-md shadow-sm">
-            <form className="form-horizontal grid gap-4">
-              {detail}
-            </form>
+            <div className="max-h-64 overflow-y-auto">
+              <form className="form-horizontal grid gap-4">
+                {detail}
+              </form>
+            </div>
           </div>
           <div className="container-profile-btn mt-6 flex gap-4 justify-end">
             {button}
